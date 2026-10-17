@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#070a12" />
+    <meta name="description" content="A complete chronological Star Wars marathon checklist with movies, shows, animated series, games, shorts, and bonus material." />
+    <title>Star Wars Chronological Marathon Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="stars" aria-hidden="true"></div>
+    <header class="hero">
+      <div class="hero__eyebrow">A LONG TIME AGO, IN A VIEWING ORDER FAR, FAR AWAY...</div>
+      <div class="hero__grid">
+        <div>
+          <p class="kicker">The complete chronological watch-through</p>
+          <h1>Star Wars<br /><span>Marathon Tracker</span></h1>
+          <p class="intro">Every film, series, episode, short, game movie, and delightfully unnecessary bonus — in one coherent checklist.</p>
+        </div>
+        <div class="progress-panel" aria-live="polite">
+          <div class="progress-orbit">
+            <svg viewBox="0 0 120 120" role="img" aria-label="Marathon progress">
+              <circle class="orbit-track" cx="60" cy="60" r="51"></circle>
+              <circle class="orbit-value" id="progress-ring" cx="60" cy="60" r="51"></circle>
+            </svg>
+            <div class="progress-number"><strong id="progress-percent">0%</strong><span>complete</span></div>
+          </div>
+          <div class="progress-copy">
+            <strong><span id="completed-count">0</span> of <span id="total-count">0</span></strong>
+            <span>entries completed</span>
+          </div>
+        </div>
+      </div>
+      <div class="download-row">
+        <a class="button button--gold" href="/downloads/Star_Wars_Chronological_Marathon_Tracker.pdf" download>Download PDF</a>
+        <a class="button" href="/downloads/Star_Wars_Chronological_Marathon_Tracker.xlsx" download>Download Excel</a>
+        <a class="button button--quiet" id="sheet-link" href="#" target="_blank" rel="noreferrer">Open Google Sheet</a>
+      </div>
+      <p class="save-note"><span class="save-dot"></span> Your progress is saved automatically in this browser.</p>
+    </header>
+
+    <main>
+      <section class="controls" aria-label="Tracker controls">
+        <label class="search">
+          <span>Search</span>
+          <input id="search" type="search" placeholder="Title, episode, date, notes..." autocomplete="off" />
+        </label>
+        <label>
+          <span>Continuity</span>
+          <select id="continuity-filter"><option value="">All continuities</option></select>
+        </label>
+        <label>
+          <span>Format</span>
+          <select id="format-filter"><option value="">All formats</option></select>
+        </label>
+        <label class="toggle"><input id="hide-completed" type="checkbox" /><span class="toggle-ui"></span><span>Hide completed</span></label>
+      </section>
+
+      <nav class="era-nav" id="era-nav" aria-label="Jump to era"></nav>
+      <div class="results-line"><span id="results-count"></span><button class="text-button" id="reset-progress" type="button">Reset progress</button></div>
+      <div id="tracker" class="tracker" aria-live="polite"></div>
+      <div id="empty-state" class="empty-state" hidden>
+        <p>No transmissions found.</p>
+        <button class="button" id="clear-filters" type="button">Clear filters</button>
+      </div>
+    </main>
+
+    <footer>
+      <p>Built for a galaxy-spanning rewatch. Canon, Legends, games, fan films, and bonus insanity are labeled so you always know what you’re watching.</p>
+      <p>Progress is stored only on this device and browser.</p>
+    </footer>
+    <script src="/app.js" defer></script>
+  </body>
+</html>
