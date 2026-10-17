@@ -44,7 +44,9 @@ h1 span { color: transparent; -webkit-text-stroke: 1.5px var(--gold); }
 .button:hover { border-color: var(--gold); }
 .button--gold { border-color: var(--gold); color: #0b0c0f; background: var(--gold); }
 .button--quiet { background: transparent; }
-.save-note { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; }
+.update-note { position: relative; z-index: 1; margin: 13px 0 0; color: #c2c9d4; font-size: 12px; }
+.update-note time { color: var(--gold-2); font-weight: 700; }
+.save-note { display: flex; align-items: center; gap: 8px; margin-top: 8px; color: var(--muted); font-size: 12px; }
 .save-dot { width: 7px; height: 7px; border-radius: 50%; background: #70d69b; box-shadow: 0 0 12px #70d69b; }
 
 main { position: relative; max-width: 1180px; margin: 0 auto; padding: 28px 24px 80px; }

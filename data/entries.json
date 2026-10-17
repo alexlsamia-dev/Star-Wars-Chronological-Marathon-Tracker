@@ -1,10 +1,10 @@
 {
   "title": "Star Wars Chronological Marathon Tracker",
   "subtitle": "One unified chronological checklist, including every Clone Wars episode, Forces of Destiny short, and Skywalker Stories fan film",
-  "sourceUrl": "https://docs.google.com/spreadsheets/d/1yK6yGRwV92PnJQb5TnUePDuWJj_wp-_MW4PdWLIXYPQ/edit",
+  "sourceUrl": "https://docs.google.com/spreadsheets/d/1yK6yGRwV92PnJQb5TnUePDuWJj_wp-_MW4PdWLIXYPQ/copy",
   "sourceUpdated": "2026-10-17",
   "total": 376,
-  "defaultCompleted": 63,
+  "defaultCompleted": 0,
   "entries": [
     {
       "id": "9cc277ccd998a5",
@@ -128,7 +128,7 @@
     {
       "id": "357e32b1d0b387",
       "sourceRow": 14,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "8",
       "era": "Old Republic and High Republic",
       "title": "The Acolyte",
@@ -145,7 +145,7 @@
     {
       "id": "991d3bc43a805f",
       "sourceRow": 15,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "9",
       "era": "Fall of the Jedi",
       "title": "Tales of the Jedi: Justice",
@@ -162,7 +162,7 @@
     {
       "id": "5bf5fb0b075eb6",
       "sourceRow": 16,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "10",
       "era": "Fall of the Jedi",
       "title": "Tales of the Jedi: Choices",
@@ -179,7 +179,7 @@
     {
       "id": "43f197747858c4",
       "sourceRow": 17,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "11",
       "era": "Fall of the Jedi",
       "title": "Tales of the Jedi: Life and Death",
@@ -196,7 +196,7 @@
     {
       "id": "bbcff3c7287175",
       "sourceRow": 18,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "12",
       "era": "Fall of the Jedi",
       "title": "Episode I: The Phantom Menace",
@@ -230,7 +230,7 @@
     {
       "id": "5f8e9236ba3437",
       "sourceRow": 20,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "14",
       "era": "Fall of the Jedi",
       "title": "Tales of the Jedi: The Sith Lord",
@@ -264,7 +264,7 @@
     {
       "id": "d16e92d35c865d",
       "sourceRow": 22,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "16",
       "era": "Fall of the Jedi",
       "title": "Episode II: Attack of the Clones",
@@ -281,7 +281,7 @@
     {
       "id": "8917e6a616bbf8",
       "sourceRow": 23,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "17",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Cat and Mouse",
@@ -298,7 +298,7 @@
     {
       "id": "dc1dc65a7117bf",
       "sourceRow": 24,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "18",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Hidden Enemy",
@@ -315,7 +315,7 @@
     {
       "id": "76c207683f4661",
       "sourceRow": 25,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "19",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars theatrical movie",
@@ -332,7 +332,7 @@
     {
       "id": "0ab3d947b31422",
       "sourceRow": 26,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "20",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Clone Cadets",
@@ -349,7 +349,7 @@
     {
       "id": "f79b5833f58d05",
       "sourceRow": 27,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "21",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Supply Lines",
@@ -366,7 +366,7 @@
     {
       "id": "89aeb0028b794b",
       "sourceRow": 28,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "22",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Ambush",
@@ -383,7 +383,7 @@
     {
       "id": "95e6de2d15f75b",
       "sourceRow": 29,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "23",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Rising Malevolence",
@@ -400,7 +400,7 @@
     {
       "id": "3c72329c7a6e82",
       "sourceRow": 30,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "24",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Shadow of Malevolence",
@@ -417,7 +417,7 @@
     {
       "id": "921d69d2c0f59b",
       "sourceRow": 31,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "25",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Destroy Malevolence",
@@ -434,7 +434,7 @@
     {
       "id": "1bca1486501f4b",
       "sourceRow": 32,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "26",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Rookies",
@@ -451,7 +451,7 @@
     {
       "id": "c6acc1881ef005",
       "sourceRow": 33,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "27",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Downfall of a Droid",
@@ -468,7 +468,7 @@
     {
       "id": "7763f35f014bba",
       "sourceRow": 34,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "28",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Duel of the Droids",
@@ -485,7 +485,7 @@
     {
       "id": "22784373e66d82",
       "sourceRow": 35,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "29",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Bombad Jedi",
@@ -502,7 +502,7 @@
     {
       "id": "109e0caf11737a",
       "sourceRow": 36,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "30",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Cloak of Darkness",
@@ -519,7 +519,7 @@
     {
       "id": "85fb061430947b",
       "sourceRow": 37,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "31",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Lair of Grievous",
@@ -536,7 +536,7 @@
     {
       "id": "d09b7446dfd934",
       "sourceRow": 38,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "32",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Dooku Captured",
@@ -553,7 +553,7 @@
     {
       "id": "4035df094da3b8",
       "sourceRow": 39,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "33",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: The Gungan General",
@@ -570,7 +570,7 @@
     {
       "id": "ff098bc62db9a2",
       "sourceRow": 40,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "34",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Jedi Crash",
@@ -587,7 +587,7 @@
     {
       "id": "b2db9e66d94fe2",
       "sourceRow": 41,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "35",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Defenders of Peace",
@@ -604,7 +604,7 @@
     {
       "id": "3bb32d40297047",
       "sourceRow": 42,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "36",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Trespass",
@@ -621,7 +621,7 @@
     {
       "id": "afdf53dd9df558",
       "sourceRow": 43,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "37",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Blue Shadow Virus",
@@ -638,7 +638,7 @@
     {
       "id": "b563e0283d4cf9",
       "sourceRow": 44,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "38",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Mystery of a Thousand Moons",
@@ -655,7 +655,7 @@
     {
       "id": "546effc6d2b437",
       "sourceRow": 45,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "39",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Storm over Ryloth",
@@ -672,7 +672,7 @@
     {
       "id": "8520771530a6a7",
       "sourceRow": 46,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "40",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Innocents of Ryloth",
@@ -689,7 +689,7 @@
     {
       "id": "5afbacad972ca5",
       "sourceRow": 47,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "41",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Liberty on Ryloth",
@@ -706,7 +706,7 @@
     {
       "id": "17e703b56ec7e5",
       "sourceRow": 48,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "42",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Holocron Heist",
@@ -723,7 +723,7 @@
     {
       "id": "1f66a5d735af8a",
       "sourceRow": 49,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "43",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Cargo of Doom",
@@ -740,7 +740,7 @@
     {
       "id": "87a7291b6a5db5",
       "sourceRow": 50,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "44",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Children of the Force",
@@ -757,7 +757,7 @@
     {
       "id": "f1fa1468e3a968",
       "sourceRow": 51,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "45",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Bounty Hunters",
@@ -774,7 +774,7 @@
     {
       "id": "0b1bbfdebb6c43",
       "sourceRow": 52,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "46",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: The Zillo Beast",
@@ -791,7 +791,7 @@
     {
       "id": "b1df48a7cc555a",
       "sourceRow": 53,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "47",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: The Zillo Beast Strikes Back",
@@ -808,7 +808,7 @@
     {
       "id": "9aa5b47a3418f6",
       "sourceRow": 54,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "48",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Senate Spy",
@@ -825,7 +825,7 @@
     {
       "id": "3188112c689973",
       "sourceRow": 55,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "49",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Landing at Point Rain",
@@ -842,7 +842,7 @@
     {
       "id": "c6e2e26e2f5721",
       "sourceRow": 56,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "50",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Weapons Factory",
@@ -859,7 +859,7 @@
     {
       "id": "0bed691fa62cd4",
       "sourceRow": 57,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "51",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Legacy of Terror",
@@ -876,7 +876,7 @@
     {
       "id": "60c361eb27e11b",
       "sourceRow": 58,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "52",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Brain Invaders",
@@ -893,7 +893,7 @@
     {
       "id": "28cbdf7084cafa",
       "sourceRow": 59,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "53",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Grievous Intrigue",
@@ -910,7 +910,7 @@
     {
       "id": "2d6039a511f159",
       "sourceRow": 60,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "54",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: The Deserter",
@@ -927,7 +927,7 @@
     {
       "id": "d5709255a240e2",
       "sourceRow": 61,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "55",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Lightsaber Lost",
@@ -944,7 +944,7 @@
     {
       "id": "2ac485cd1c75df",
       "sourceRow": 62,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "56",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: The Mandalore Plot",
@@ -961,7 +961,7 @@
     {
       "id": "2ea28c089cff74",
       "sourceRow": 63,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "57",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Voyage of Temptation",
@@ -978,7 +978,7 @@
     {
       "id": "e6f384c8077b46",
       "sourceRow": 64,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "58",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Duchess of Mandalore",
@@ -995,7 +995,7 @@
     {
       "id": "a3edb560692123",
       "sourceRow": 65,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "59",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Death Trap",
@@ -1012,7 +1012,7 @@
     {
       "id": "28c7c3167246cd",
       "sourceRow": 66,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "60",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: R2 Come Home",
@@ -1029,7 +1029,7 @@
     {
       "id": "01cb3bca50b322",
       "sourceRow": 67,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "61",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Lethal Trackdown",
@@ -1046,7 +1046,7 @@
     {
       "id": "56a5e5ea0443b0",
       "sourceRow": 68,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "62",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Corruption",
@@ -1063,7 +1063,7 @@
     {
       "id": "e294c759f9ed0f",
       "sourceRow": 69,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "63",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: The Academy",
@@ -1080,7 +1080,7 @@
     {
       "id": "92d5b0a40235b1",
       "sourceRow": 70,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "64",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Assassin",
@@ -1097,7 +1097,7 @@
     {
       "id": "363948bd763003",
       "sourceRow": 71,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "65",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: ARC Troopers",
@@ -1114,7 +1114,7 @@
     {
       "id": "757f8c21094f25",
       "sourceRow": 72,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "66",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Sphere of Influence",
@@ -1131,7 +1131,7 @@
     {
       "id": "67e22401f57353",
       "sourceRow": 73,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "67",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Evil Plans",
@@ -1148,7 +1148,7 @@
     {
       "id": "468c7f3c6043c5",
       "sourceRow": 74,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "68",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Hostage Crisis",
@@ -1165,7 +1165,7 @@
     {
       "id": "0870b81b7be07c",
       "sourceRow": 75,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "69",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Hunt for Ziro",
@@ -1182,7 +1182,7 @@
     {
       "id": "3a29b4044c9e7f",
       "sourceRow": 76,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "70",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Heroes on Both Sides",
@@ -1199,7 +1199,7 @@
     {
       "id": "7458c97d3fc956",
       "sourceRow": 77,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "71",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Pursuit of Peace",
@@ -1216,7 +1216,7 @@
     {
       "id": "d3af4dd1e47087",
       "sourceRow": 78,
-      "defaultDone": true,
+      "defaultDone": false,
       "number": "72",
       "era": "Fall of the Jedi",
       "title": "The Clone Wars: Senate Murders",
