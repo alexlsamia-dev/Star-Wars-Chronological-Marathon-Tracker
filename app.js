@@ -1,4 +1,4 @@
-const STORAGE_KEY = "star-wars-marathon-progress-v2";
+const STORAGE_KEY = "star-wars-marathon-progress-v3";
 
 const state = {
   data: null,
@@ -50,9 +50,12 @@ function matches(item) {
   if (state.hideCompleted && state.done.has(item.id)) return false;
   if (state.continuity && item.continuity !== state.continuity) return false;
   if (state.format && item.format !== state.format) return false;
-  const isSkywalker = item.number.startsWith("SWS-");
-  if (state.collection === "main" && isSkywalker) return false;
-  if (state.collection === "skywalker" && !isSkywalker) return false;
+  if (state.collection === "main" && item.collection !== "main") return false;
+  if (state.collection === "fan" && !item.era.startsWith("Fan chronology")) return false;
+  if (state.collection === "skywalker" && item.collection !== "skywalker") return false;
+  if (state.collection === "screenshots" && item.collection !== "screenshots") return false;
+  if (state.collection === "bonus" && item.collection !== "bonus") return false;
+  if (state.collection === "review" && !item.era.startsWith("Review & decide")) return false;
   if (!state.search) return true;
   const haystack = Object.values(item).join(" ").toLowerCase();
   return haystack.includes(state.search);
@@ -60,11 +63,29 @@ function matches(item) {
 
 function itemCard(item) {
   const done = state.done.has(item.id);
-  const skywalker = item.number.startsWith("SWS-");
+  const skywalker = item.collection === "skywalker";
+  const screenshot = item.collection === "screenshots";
+  const review = item.era.startsWith("Review & decide");
   const watch = item.watchUrl ? `<a class="watch-link" href="${escapeHtml(item.watchUrl)}" target="_blank" rel="noreferrer">${escapeHtml(item.watchLabel || "Open")} <span aria-hidden="true">↗</span></a>` : "";
   const notes = item.notes ? `<p class="notes">${item.notesUrl ? `<a href="${escapeHtml(item.notesUrl)}" target="_blank" rel="noreferrer">${escapeHtml(item.notes)}</a>` : escapeHtml(item.notes)}</p>` : "";
+  const detailRows = [
+    ["Series", item.seriesName],
+    ["Original title", item.originalTitle && item.originalTitle !== item.title ? item.originalTitle : ""],
+    ["Suggested placement", item.chronologicalPlacement],
+    ["Source screenshot(s)", item.sourceScreenshots],
+    ["Verification", item.verificationStatus],
+    ["Placement confidence", item.placementConfidence],
+    ["Review reason", item.reviewReasons],
+    ["Duplicate status", item.duplicateStatus],
+  ].filter(([, value]) => value);
+  const details = detailRows.length || item.description ? `
+    <details class="entry-details">
+      <summary>Source details &amp; verification</summary>
+      ${detailRows.length ? `<dl>${detailRows.map(([label, value]) => `<div><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value)}</dd></div>`).join("")}</dl>` : ""}
+      ${item.description ? `<div class="entry-description"><strong>Visible description</strong><p>${escapeHtml(item.description)}</p></div>` : ""}
+    </details>` : "";
   return `
-    <article class="entry ${done ? "entry--done" : ""} ${skywalker ? "entry--skywalker" : ""}" data-id="${item.id}">
+    <article class="entry ${done ? "entry--done" : ""} ${skywalker ? "entry--skywalker" : ""} ${screenshot ? "entry--screenshot" : ""} ${review ? "entry--review" : ""}" data-id="${item.id}">
       <label class="check-wrap" aria-label="Mark ${escapeHtml(item.title)} complete">
         <input class="entry-check" type="checkbox" ${done ? "checked" : ""} />
         <span class="checkmark"></span>
@@ -85,6 +106,7 @@ function itemCard(item) {
           ${item.whereToWatch ? `<span><b>Where</b>${escapeHtml(item.whereToWatch)}</span>` : ""}
         </div>
         ${notes}
+        ${details}
       </div>
     </article>`;
 }
@@ -100,7 +122,13 @@ function render() {
   els.tracker.innerHTML = [...groups.entries()].map(([era, items]) => {
     const id = `era-${era.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
     const completed = items.filter((item) => state.done.has(item.id)).length;
-    const label = era.startsWith("Skywalker Stories") ? "Fan anthology · suggested placement" : "Chronology section";
+    const label = era.startsWith("Fan chronology")
+      ? "Fan-made chronology · suggested placement"
+      : era.startsWith("Review & decide")
+        ? "Uncertain placement · your decision"
+        : era.startsWith("Bonus:")
+          ? "Alternate universes and bonus"
+          : "Chronology section";
     return `<section class="era" id="${id}">
       <div class="era__heading"><div><p>${label}</p><h2>${escapeHtml(era)}</h2></div><span>${completed}/${items.length}</span></div>
       <div class="entries">${items.map(itemCard).join("")}</div>
@@ -137,7 +165,7 @@ function clearFilters() {
 }
 
 async function init() {
-  ["completedCount", "totalCount", "progressPercent", "progressRing", "tracker", "emptyState", "resultsCount", "eraNav", "search", "continuityFilter", "formatFilter", "collectionFilter", "hideCompleted", "lastUpdated"].forEach((key) => {
+  ["completedCount", "totalCount", "progressPercent", "progressRing", "tracker", "emptyState", "resultsCount", "eraNav", "search", "continuityFilter", "formatFilter", "collectionFilter", "hideCompleted", "lastUpdated", "intakeSummary"].forEach((key) => {
     els[key] = document.getElementById(key.replace(/[A-Z]/g, (m) => `-${m.toLowerCase()}`));
   });
   const response = await fetch("/data/entries.json");
@@ -146,6 +174,9 @@ async function init() {
   const updated = new Date(`${state.data.sourceUpdated}T12:00:00`);
   els.lastUpdated.textContent = new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric", year: "numeric" }).format(updated);
   els.lastUpdated.dateTime = state.data.sourceUpdated;
+  if (state.data.intake) {
+    els.intakeSummary.textContent = `${state.data.total} entries · ${state.data.intake.images_received} source screenshots · ${state.data.intake.unique_video_entries_after_confirmed_duplicates} unique screenshot videos.`;
+  }
   loadProgress(state.data.entries);
   buildFilters();
   render();

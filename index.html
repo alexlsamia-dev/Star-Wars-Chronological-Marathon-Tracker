@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#070a12" />
-    <meta name="description" content="A complete chronological Star Wars marathon checklist with movies, shows, animated series, games, shorts, and bonus material." />
+    <meta name="description" content="A complete chronological Star Wars marathon checklist with movies, shows, animated series, games, shorts, fan films, source screenshots, and bonus material." />
     <title>Star Wars Chronological Marathon Tracker</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -19,7 +19,7 @@
         <div>
           <p class="kicker">The complete chronological watch-through</p>
           <h1>Star Wars<br /><span>Marathon Tracker</span></h1>
-          <p class="intro">Every film, series, episode, short, game movie, Skywalker Stories fan film, and delightfully unnecessary bonus — in one coherent checklist.</p>
+          <p class="intro">Every film, series, episode, short, game movie, Skywalker Stories entry, and 500+ fan videos — with source notes and uncertain placements clearly flagged — in one coherent checklist.</p>
         </div>
         <div class="progress-panel" aria-live="polite">
           <div class="progress-orbit">
@@ -40,8 +40,9 @@
         <a class="button" href="/downloads/Star_Wars_Chronological_Marathon_Tracker.xlsx" download>Download Excel</a>
         <a class="button button--quiet" id="sheet-link" href="#" target="_blank" rel="noreferrer">Make a Google Sheet copy</a>
         <a class="button button--quiet" href="#contribute">Suggest a change</a>
+        <a class="button button--quiet" href="#support">Support the project</a>
       </div>
-      <p class="update-note">Marathon last updated <time id="last-updated">October 17, 2026</time>. The Google Sheet button creates your own editable copy.</p>
+      <p class="update-note">Marathon last updated <time id="last-updated">October 17, 2026</time>. <span id="intake-summary">949 entries · 591 source screenshots · 575 unique screenshot videos.</span> The Google Sheet button creates your own editable copy.</p>
       <p class="save-note"><span class="save-dot"></span> Your progress is saved automatically in this browser.</p>
     </header>
 
@@ -63,8 +64,12 @@
           <span>Collection</span>
           <select id="collection-filter">
             <option value="">Everything</option>
-            <option value="main">Main tracker</option>
+            <option value="main">Official &amp; core tracker</option>
+            <option value="fan">Fan chronology</option>
             <option value="skywalker">Skywalker Stories</option>
+            <option value="screenshots">Screenshot video archive</option>
+            <option value="bonus">Bonus material</option>
+            <option value="review">Review &amp; decide</option>
           </select>
         </label>
         <label class="toggle"><input id="hide-completed" type="checkbox" /><span class="toggle-ui"></span><span>Hide completed</span></label>
@@ -77,6 +82,38 @@
         <p>No transmissions found.</p>
         <button class="button" id="clear-filters" type="button">Clear filters</button>
       </div>
+
+      <section class="support" id="support" aria-labelledby="support-title">
+        <div class="support__intro">
+          <p class="section-kicker">Two transparent ways to help</p>
+          <h2 id="support-title">Support a child—or support the tracker</h2>
+          <p>The charity path and personal-support path are kept completely separate, so you always know where your contribution is going.</p>
+        </div>
+        <div class="support__grid">
+          <article class="support-card support-card--charity">
+            <p class="support-card__eyebrow">Toy donation</p>
+            <h3>Buy a Star Wars toy for Elf Louise</h3>
+            <p>Choose a Star Wars gift from this community-curated Amazon list, then use Elf Louise’s official instructions to make sure it reaches the organization.</p>
+            <div class="support-card__actions">
+              <a class="button button--gold" href="https://www.amazon.com/hz/wishlist/ls/2CRECMF9U059X?ref_=wl_share" target="_blank" rel="noreferrer">Open Star Wars toy list</a>
+              <a class="button" href="https://elflouise.org/donate-2/" target="_blank" rel="noreferrer">Elf Louise instructions</a>
+              <a class="text-link" href="https://elflouise.org/toy-drop-locations/" target="_blank" rel="noreferrer">See official toy drop locations ↗</a>
+            </div>
+            <p class="transparency-note"><strong>Transparency:</strong> This Star Wars list is curated for the tracker; it is not Elf Louise’s official Amazon list. A purchase does not automatically reach Elf Louise unless the checkout destination is configured for that purpose. Follow the official donation or drop-off instructions. This site does not collect or route charity funds.</p>
+          </article>
+          <article class="support-card support-card--personal">
+            <p class="support-card__eyebrow">Personal tip</p>
+            <h3>Help keep the marathon tracker updated</h3>
+            <p>Personal tips can help cover research tools, hosting, and the time required to maintain this very large archive.</p>
+            <div class="support-card__actions support-card__actions--payments">
+              <a class="button" href="https://www.paypal.com/qrcodes/p2pqrc/36KTDXRW5ZQ9G" target="_blank" rel="noreferrer">PayPal</a>
+              <a class="button" href="https://cash.app/$mrasamia?qr=1" target="_blank" rel="noreferrer">Cash App</a>
+              <a class="button" href="https://venmo.com/code?user_id=1777879499145216096&amp;created=1792262948.149641" target="_blank" rel="noreferrer">Venmo</a>
+            </div>
+            <p class="transparency-note"><strong>Transparency:</strong> These links send personal tips directly to the tracker owner. They are not charitable donations or tax-deductible, and no fixed percentage is automatically distributed to creators or Elf Louise.</p>
+          </article>
+        </div>
+      </section>
 
       <section class="contribute" id="contribute" aria-labelledby="contribute-title">
         <div class="contribute__intro">
