@@ -176,8 +176,10 @@ async function init() {
   ["completedCount", "totalCount", "progressPercent", "progressRing", "tracker", "emptyState", "resultsCount", "eraNav", "search", "continuityFilter", "formatFilter", "collectionFilter", "hideCompleted", "lastUpdated", "intakeSummary"].forEach((key) => {
     els[key] = document.getElementById(key.replace(/[A-Z]/g, (m) => `-${m.toLowerCase()}`));
   });
-  const response = await fetch("/data/entries.json");
+  const response = await fetch("/data/entries.json?v=2026-10-17-2", { cache: "no-store" });
+  if (!response.ok) throw new Error(`Tracker data request failed: ${response.status}`);
   state.data = await response.json();
+  if (!state.data || !Array.isArray(state.data.entries)) throw new Error("Tracker data is incomplete.");
   document.getElementById("sheet-link").href = state.data.sourceUrl;
   const updated = new Date(`${state.data.sourceUpdated}T12:00:00`);
   els.lastUpdated.textContent = new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric", year: "numeric" }).format(updated);
