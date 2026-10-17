@@ -1,0 +1,73 @@
+name: Suggest an edit
+description: Report an incorrect title, date, placement, link, episode number, or description.
+title: "[Edit]: "
+labels:
+  - suggested edit
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve the Star Wars Chronological Marathon Tracker. Please share enough detail for the correction to be checked. This submission will be public, so do not include personal information.
+
+  - type: input
+    id: entry
+    attributes:
+      label: Tracker entry
+      description: What movie, episode, game, video, or other entry needs to be changed?
+      placeholder: "Example: The Clone Wars — S3E01 — Clone Cadets"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: correction_type
+    attributes:
+      label: What needs to be corrected?
+      options:
+        - Chronological placement
+        - Title or series name
+        - Season or episode number
+        - Release or publication date
+        - Description or notes
+        - Watch link
+        - Continuity or format label
+        - Duplicate entry
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_information
+    attributes:
+      label: What does the tracker currently say?
+      description: Copy the current information or paste the tracker entry number if possible.
+    validations:
+      required: true
+
+  - type: textarea
+    id: correction
+    attributes:
+      label: What should it say instead?
+      description: Describe the exact correction and why it is more accurate.
+    validations:
+      required: true
+
+  - type: textarea
+    id: sources
+    attributes:
+      label: Supporting sources
+      description: Add links to official pages, the original video, Wookieepedia, or other supporting material.
+      placeholder: "One link per line"
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional context
+      description: Add screenshots, timestamps, or anything else that will help verify the correction.
+
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      options:
+        - label: I checked that this edit has not already been suggested in an open issue.
+          required: true
