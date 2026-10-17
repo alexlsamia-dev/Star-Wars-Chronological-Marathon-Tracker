@@ -1,0 +1,89 @@
+name: Recommend an addition
+description: Suggest a missing movie, episode, game, fan film, video, or other Star Wars story.
+title: "[Addition]: "
+labels:
+  - recommended addition
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for expanding the marathon. Canon, Legends, fan-made, alternate-universe, and bonus material are all welcome when clearly identified. This submission will be public, so do not include personal information.
+
+  - type: input
+    id: title
+    attributes:
+      label: Exact title
+      description: Use the title shown by the original publisher whenever possible.
+      placeholder: "Full title of the movie, episode, game, or video"
+    validations:
+      required: true
+
+  - type: input
+    id: series
+    attributes:
+      label: Series or collection
+      description: Include the larger series, channel, game, or collection name if applicable.
+      placeholder: "Example: Forces of Destiny or Skywalker Stories"
+
+  - type: input
+    id: episode
+    attributes:
+      label: Season, episode, chapter, or part
+      placeholder: "Example: S2E04, Chapter 3, or Part II"
+
+  - type: input
+    id: release_date
+    attributes:
+      label: Release or publication date
+      placeholder: "Month Day, Year — or Unknown"
+
+  - type: input
+    id: link
+    attributes:
+      label: Link to watch or learn more
+      placeholder: "https://..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: continuity
+    attributes:
+      label: Continuity
+      options:
+        - Canon
+        - Legends
+        - Fan-made / non-canon
+        - Alternate universe
+        - Parody / bonus material
+        - Unsure
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Story description
+      description: Briefly explain the events, characters, and setting. Please do not guess if information is unavailable.
+    validations:
+      required: true
+
+  - type: textarea
+    id: placement
+    attributes:
+      label: Suggested chronological placement
+      description: Where should this appear in the marathon, and what story evidence supports that placement?
+      placeholder: "Example: Between Solo and Obi-Wan Kenobi because..."
+
+  - type: textarea
+    id: sources
+    attributes:
+      label: Supporting sources or context
+      description: Add official pages, descriptions, screenshots, or timestamps that will help verify the entry.
+
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      options:
+        - label: I checked that this item is not already in the tracker or an open recommendation.
+          required: true
