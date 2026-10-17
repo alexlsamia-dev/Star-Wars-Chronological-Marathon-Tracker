@@ -1,4 +1,14 @@
-const STORAGE_KEY = "star-wars-marathon-progress-v3";
+const STORAGE_KEY = "star-wars-marathon-progress-v4";
+const REVIEW_ERA = "Unplaced fan stories — review and decide";
+const MAIN_TIMELINE_ERAS = new Set([
+  "Old Republic and High Republic",
+  "Fall of the Jedi",
+  "Reign of the Empire",
+  "Galactic Civil War",
+  "New Republic",
+  "Rise of the First Order",
+  "Legacy and Far Future",
+]);
 
 const state = {
   data: null,
@@ -51,11 +61,11 @@ function matches(item) {
   if (state.continuity && item.continuity !== state.continuity) return false;
   if (state.format && item.format !== state.format) return false;
   if (state.collection === "main" && item.collection !== "main") return false;
-  if (state.collection === "fan" && !item.era.startsWith("Fan chronology")) return false;
+  if (state.collection === "fan" && !/fan/i.test(`${item.continuity} ${item.collection}`)) return false;
   if (state.collection === "skywalker" && item.collection !== "skywalker") return false;
   if (state.collection === "screenshots" && item.collection !== "screenshots") return false;
   if (state.collection === "bonus" && item.collection !== "bonus") return false;
-  if (state.collection === "review" && !item.era.startsWith("Review & decide")) return false;
+  if (state.collection === "review" && item.era !== REVIEW_ERA) return false;
   if (!state.search) return true;
   const haystack = Object.values(item).join(" ").toLowerCase();
   return haystack.includes(state.search);
@@ -65,7 +75,7 @@ function itemCard(item) {
   const done = state.done.has(item.id);
   const skywalker = item.collection === "skywalker";
   const screenshot = item.collection === "screenshots";
-  const review = item.era.startsWith("Review & decide");
+  const review = item.era === REVIEW_ERA;
   const watch = item.watchUrl ? `<a class="watch-link" href="${escapeHtml(item.watchUrl)}" target="_blank" rel="noreferrer">${escapeHtml(item.watchLabel || "Open")} <span aria-hidden="true">↗</span></a>` : "";
   const notes = item.notes ? `<p class="notes">${item.notesUrl ? `<a href="${escapeHtml(item.notesUrl)}" target="_blank" rel="noreferrer">${escapeHtml(item.notes)}</a>` : escapeHtml(item.notes)}</p>` : "";
   const detailRows = [
@@ -122,13 +132,11 @@ function render() {
   els.tracker.innerHTML = [...groups.entries()].map(([era, items]) => {
     const id = `era-${era.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
     const completed = items.filter((item) => state.done.has(item.id)).length;
-    const label = era.startsWith("Fan chronology")
-      ? "Fan-made chronology · suggested placement"
-      : era.startsWith("Review & decide")
-        ? "Uncertain placement · your decision"
-        : era.startsWith("Bonus:")
-          ? "Alternate universes and bonus"
-          : "Chronology section";
+    const label = era === REVIEW_ERA
+      ? "Uncertain placement · your decision"
+      : MAIN_TIMELINE_ERAS.has(era)
+        ? "Official, Legends, and fan stories in chronological order"
+        : "Alternate continuity and bonus material";
     return `<section class="era" id="${id}">
       <div class="era__heading"><div><p>${label}</p><h2>${escapeHtml(era)}</h2></div><span>${completed}/${items.length}</span></div>
       <div class="entries">${items.map(itemCard).join("")}</div>
