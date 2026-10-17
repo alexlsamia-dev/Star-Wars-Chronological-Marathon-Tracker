@@ -6,6 +6,7 @@ const state = {
   search: "",
   continuity: "",
   format: "",
+  collection: "",
   hideCompleted: false,
 };
 
@@ -49,6 +50,9 @@ function matches(item) {
   if (state.hideCompleted && state.done.has(item.id)) return false;
   if (state.continuity && item.continuity !== state.continuity) return false;
   if (state.format && item.format !== state.format) return false;
+  const isSkywalker = item.number.startsWith("SWS-");
+  if (state.collection === "main" && isSkywalker) return false;
+  if (state.collection === "skywalker" && !isSkywalker) return false;
   if (!state.search) return true;
   const haystack = Object.values(item).join(" ").toLowerCase();
   return haystack.includes(state.search);
@@ -56,10 +60,11 @@ function matches(item) {
 
 function itemCard(item) {
   const done = state.done.has(item.id);
+  const skywalker = item.number.startsWith("SWS-");
   const watch = item.watchUrl ? `<a class="watch-link" href="${escapeHtml(item.watchUrl)}" target="_blank" rel="noreferrer">${escapeHtml(item.watchLabel || "Open")} <span aria-hidden="true">↗</span></a>` : "";
   const notes = item.notes ? `<p class="notes">${item.notesUrl ? `<a href="${escapeHtml(item.notesUrl)}" target="_blank" rel="noreferrer">${escapeHtml(item.notes)}</a>` : escapeHtml(item.notes)}</p>` : "";
   return `
-    <article class="entry ${done ? "entry--done" : ""}" data-id="${item.id}">
+    <article class="entry ${done ? "entry--done" : ""} ${skywalker ? "entry--skywalker" : ""}" data-id="${item.id}">
       <label class="check-wrap" aria-label="Mark ${escapeHtml(item.title)} complete">
         <input class="entry-check" type="checkbox" ${done ? "checked" : ""} />
         <span class="checkmark"></span>
@@ -95,8 +100,9 @@ function render() {
   els.tracker.innerHTML = [...groups.entries()].map(([era, items]) => {
     const id = `era-${era.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
     const completed = items.filter((item) => state.done.has(item.id)).length;
+    const label = era.startsWith("Skywalker Stories") ? "Fan anthology · suggested placement" : "Chronology section";
     return `<section class="era" id="${id}">
-      <div class="era__heading"><div><p>Chronology section</p><h2>${escapeHtml(era)}</h2></div><span>${completed}/${items.length}</span></div>
+      <div class="era__heading"><div><p>${label}</p><h2>${escapeHtml(era)}</h2></div><span>${completed}/${items.length}</span></div>
       <div class="entries">${items.map(itemCard).join("")}</div>
     </section>`;
   }).join("");
@@ -120,16 +126,18 @@ function clearFilters() {
   state.search = "";
   state.continuity = "";
   state.format = "";
+  state.collection = "";
   state.hideCompleted = false;
   els.search.value = "";
   els.continuityFilter.value = "";
   els.formatFilter.value = "";
+  els.collectionFilter.value = "";
   els.hideCompleted.checked = false;
   render();
 }
 
 async function init() {
-  ["completedCount", "totalCount", "progressPercent", "progressRing", "tracker", "emptyState", "resultsCount", "eraNav", "search", "continuityFilter", "formatFilter", "hideCompleted"].forEach((key) => {
+  ["completedCount", "totalCount", "progressPercent", "progressRing", "tracker", "emptyState", "resultsCount", "eraNav", "search", "continuityFilter", "formatFilter", "collectionFilter", "hideCompleted"].forEach((key) => {
     els[key] = document.getElementById(key.replace(/[A-Z]/g, (m) => `-${m.toLowerCase()}`));
   });
   const response = await fetch("/data/entries.json");
@@ -142,6 +150,7 @@ async function init() {
   els.search.addEventListener("input", (event) => { state.search = event.target.value.trim().toLowerCase(); render(); });
   els.continuityFilter.addEventListener("change", (event) => { state.continuity = event.target.value; render(); });
   els.formatFilter.addEventListener("change", (event) => { state.format = event.target.value; render(); });
+  els.collectionFilter.addEventListener("change", (event) => { state.collection = event.target.value; render(); });
   els.hideCompleted.addEventListener("change", (event) => { state.hideCompleted = event.target.checked; render(); });
   els.tracker.addEventListener("change", (event) => {
     if (!event.target.classList.contains("entry-check")) return;
