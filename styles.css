@@ -123,6 +123,19 @@ main { position: relative; max-width: 1180px; margin: 0 auto; padding: 28px 24px
 .support-card--personal .support-card__eyebrow { color: var(--blue); }
 .support-card h3 { margin: 5px 0 10px; font-family: var(--heading); font-size: 31px; line-height: 1; text-transform: uppercase; }
 .support-card > p:not(.support-card__eyebrow):not(.transparency-note) { margin: 0; color: #b7c0ce; font-size: 13px; }
+.support-side-picker { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 20px; }
+.support-side { position: relative; display: flex; flex-direction: column; min-width: 0; padding: 18px 16px 16px; border: 1px solid; color: #f7f9fc; text-decoration: none; overflow: hidden; transition: border-color .2s, background .2s, transform .2s; }
+.support-side::after { content: ""; position: absolute; inset: auto -22px -34px auto; width: 94px; height: 94px; border: 1px solid currentColor; border-radius: 50%; opacity: .12; }
+.support-side:hover { transform: translateY(-2px); }
+.support-side--light { border-color: rgba(102,179,255,.62); background: linear-gradient(135deg, rgba(39,112,178,.25), rgba(242,193,78,.08)); }
+.support-side--light:hover { border-color: #66b3ff; background: linear-gradient(135deg, rgba(39,112,178,.38), rgba(242,193,78,.14)); }
+.support-side--dark { border-color: rgba(229,65,65,.62); background: linear-gradient(135deg, rgba(139,17,29,.3), rgba(42,5,10,.26)); }
+.support-side--dark:hover { border-color: #ff5d5d; background: linear-gradient(135deg, rgba(158,24,37,.46), rgba(53,7,13,.36)); }
+.support-side__label { color: #aab4c4; font-size: 9px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.support-side strong { margin-top: 2px; font-family: var(--heading); font-size: 25px; line-height: 1; text-transform: uppercase; }
+.support-side--light strong { color: #8cc8ff; }
+.support-side--dark strong { color: #ff7777; }
+.support-side small { margin-top: 8px; color: #8e99aa; font-size: 10px; line-height: 1.35; }
 .support-card__actions { display: flex; flex-wrap: wrap; gap: 9px; margin: 20px 0 16px; }
 .support-card__actions--payments .button { flex: 1 1 28%; }
 .text-link { align-self: center; padding: 8px 3px; color: var(--blue); font-size: 12px; font-weight: 700; text-underline-offset: 3px; }
@@ -172,6 +185,7 @@ footer p { max-width: 650px; }
   .entry-details dl { grid-template-columns: 1fr; }
   .support { margin-top: 58px; padding: 26px 18px; }
   .support-card { padding: 20px 16px; }
+  .support-side-picker { grid-template-columns: 1fr; }
   .support-card__actions .button, .support-card__actions--payments .button { flex: 1 1 100%; }
   .text-link { align-self: flex-start; }
   .contribute { gap: 26px; margin-top: 58px; padding: 24px 18px; }
