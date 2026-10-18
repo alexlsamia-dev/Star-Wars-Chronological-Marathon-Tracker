@@ -42,7 +42,7 @@
         <a class="button button--quiet" href="#contribute">Suggest a change</a>
         <a class="button button--quiet" href="#support">Support the project</a>
       </div>
-      <p class="update-note">Marathon last updated <time id="last-updated">October 17, 2026</time>. <span id="intake-summary">734 entries · 591 source screenshots · 575 unique screenshot videos.</span> The Google Sheet button creates your own editable copy.</p>
+      <p class="update-note">Marathon last updated <time id="last-updated">October 18, 2026</time>. <span id="intake-summary">741 entries · 591 source screenshots · 575 unique screenshot videos.</span> The Google Sheet button creates your own editable copy.</p>
       <p class="save-note"><span class="save-dot"></span> Your progress is saved automatically in this browser.</p>
     </header>
 
@@ -74,8 +74,27 @@
         <label class="toggle"><input id="hide-completed" type="checkbox" /><span class="toggle-ui"></span><span>Hide completed</span></label>
       </section>
 
+      <section class="exclude-panel" aria-labelledby="exclude-title">
+        <div class="exclude-panel__heading">
+          <div>
+            <p class="section-kicker">Customize your marathon</p>
+            <h2 id="exclude-title">Exclude from my watch-through</h2>
+          </div>
+          <button class="text-button" id="clear-exclusions" type="button">Clear exclusions</button>
+        </div>
+        <p>Excluded entries disappear and no longer count toward your total or completion percentage. Search and the filters above only change what you are viewing.</p>
+        <div class="exclude-options" id="exclude-options"></div>
+      </section>
+
       <nav class="era-nav" id="era-nav" aria-label="Jump to era"></nav>
-      <div class="results-line"><span id="results-count"></span><button class="text-button" id="reset-progress" type="button">Reset progress</button></div>
+      <div class="results-line">
+        <span id="results-count"></span>
+        <div class="results-actions">
+          <button class="text-button" id="expand-all" type="button">Expand all</button>
+          <button class="text-button" id="collapse-all" type="button">Collapse all</button>
+          <button class="text-button" id="reset-progress" type="button">Reset progress</button>
+        </div>
+      </div>
       <div id="tracker" class="tracker" aria-live="polite"></div>
       <div id="empty-state" class="empty-state" hidden>
         <p>No transmissions found.</p>
