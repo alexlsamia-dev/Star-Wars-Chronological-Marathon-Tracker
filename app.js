@@ -56,7 +56,14 @@ const state = {
 const els = {};
 
 function escapeHtml(value = "") {
-  return String(value ?? "").replace(/[&<>'"]/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#039;", '"': "&quot;" })[char]);
+  return value.replace(/[&<>'"]/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#039;", '"': "&quot;" })[char]);
+}
+
+function humanizeDuration(value = "") {
+  const match = /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/.exec(value);
+  if (!match) return value;
+  const [, hours, minutes, seconds] = match;
+  return [hours && `${hours} hr`, minutes && `${minutes} min`, seconds && `${seconds} sec`].filter(Boolean).join(" ");
 }
 
 function loadProgress(entries) {
@@ -145,6 +152,7 @@ function matches(item) {
   if (state.collection === "fan" && !/fan/i.test(`${item.continuity} ${item.collection}`)) return false;
   if (state.collection === "skywalker" && item.collection !== "skywalker") return false;
   if (state.collection === "screenshots" && item.collection !== "screenshots") return false;
+  if (state.collection === "creator channels" && item.collection !== "creator channels") return false;
   if (state.collection === "bonus" && item.collection !== "bonus") return false;
   if (state.collection === "review" && item.era !== REVIEW_ERA) return false;
   if (!state.search) return true;
@@ -160,10 +168,12 @@ function itemCard(item) {
   const watch = item.watchUrl ? `<a class="watch-link" href="${escapeHtml(item.watchUrl)}" target="_blank" rel="noreferrer">${escapeHtml(item.watchLabel || "Open")} <span aria-hidden="true">↗</span></a>` : "";
   const notes = item.notes ? `<p class="notes">${item.notesUrl ? `<a href="${escapeHtml(item.notesUrl)}" target="_blank" rel="noreferrer">${escapeHtml(item.notes)}</a>` : escapeHtml(item.notes)}</p>` : "";
   const detailRows = [
+    ["Creator", item.creator],
+    ["Runtime", humanizeDuration(item.duration)],
     ["Series", item.seriesName],
     ["Original title", item.originalTitle && item.originalTitle !== item.title ? item.originalTitle : ""],
     ["Suggested placement", item.chronologicalPlacement],
-    ["Source screenshot(s)", item.sourceScreenshots],
+    ["Source file / screenshot(s)", item.sourceScreenshots],
     ["Verification", item.verificationStatus],
     ["Placement confidence", item.placementConfidence],
     ["Review reason", item.reviewReasons],
@@ -204,6 +214,7 @@ function itemCard(item) {
 
 function render() {
   const filtered = state.data.entries.filter(matches);
+  const hasActiveNarrowing = Boolean(state.search || state.continuity || state.format || state.collection || state.hideCompleted);
   const groups = new Map();
   filtered.forEach((item) => {
     if (!groups.has(item.era)) groups.set(item.era, []);
@@ -221,7 +232,7 @@ function render() {
         ? "Official, Legends, and fan stories in chronological order"
         : "Alternate continuity and bonus material");
     const years = meta?.years ? `<span class="era__years">${escapeHtml(meta.years)}</span>` : "";
-    const open = state.collapsedEras.has(era) ? "" : " open";
+    const open = hasActiveNarrowing || !state.collapsedEras.has(era) ? " open" : "";
     return `<details class="era" id="${id}" data-era="${escapeHtml(era)}"${open}>
       <summary class="era__heading"><div><p>${escapeHtml(label)}</p><h2>${escapeHtml(era)} ${years}</h2></div><span>${completed}/${eraScope.length}<i aria-hidden="true"></i></span></summary>
       <div class="entries">${items.map(itemCard).join("")}</div>
@@ -269,16 +280,25 @@ async function init() {
   ["completedCount", "totalCount", "progressPercent", "progressRing", "tracker", "emptyState", "resultsCount", "eraNav", "search", "continuityFilter", "formatFilter", "collectionFilter", "hideCompleted", "lastUpdated", "intakeSummary", "excludeOptions"].forEach((key) => {
     els[key] = document.getElementById(key.replace(/[A-Z]/g, (m) => `-${m.toLowerCase()}`));
   });
-  const response = await fetch("/data/entries.json?v=2026-10-18-1", { cache: "no-store" });
-  if (!response.ok) throw new Error(`Tracker data request failed: ${response.status}`);
-  state.data = await response.json();
+  let lastError;
+  for (const path of ["/data/entries.min.json?v=2026-10-18-2", "/data/entries.json?v=2026-10-18-2"]) {
+    try {
+      const response = await fetch(path, { cache: "no-store" });
+      if (!response.ok) throw new Error(`Tracker data request failed: ${response.status}`);
+      state.data = await response.json();
+      break;
+    } catch (error) {
+      lastError = error;
+    }
+  }
+  if (!state.data) throw lastError || new Error("Tracker data request failed.");
   if (!state.data || !Array.isArray(state.data.entries)) throw new Error("Tracker data is incomplete.");
   document.getElementById("sheet-link").href = state.data.sourceUrl;
   const updated = new Date(`${state.data.sourceUpdated}T12:00:00`);
   els.lastUpdated.textContent = new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric", year: "numeric" }).format(updated);
   els.lastUpdated.dateTime = state.data.sourceUpdated;
   if (state.data.intake) {
-    els.intakeSummary.textContent = `${state.data.total} entries · ${state.data.intake.images_received} source screenshots · ${state.data.intake.unique_video_entries_after_confirmed_duplicates} unique screenshot videos.`;
+    els.intakeSummary.textContent = `${state.data.total} entries · ${state.data.intake.images_received} source screenshots · ${state.data.intake.creator_channel_new_rows_added || 0} newly added creator-channel stories.`;
   }
   loadProgress(state.data.entries);
   loadExclusions();
