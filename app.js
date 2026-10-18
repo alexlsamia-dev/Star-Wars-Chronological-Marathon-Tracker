@@ -282,6 +282,7 @@ async function init() {
   }
   loadProgress(state.data.entries);
   loadExclusions();
+  state.collapsedEras = new Set(state.data.entries.map((item) => item.era));
   buildFilters();
   render();
 
@@ -336,3 +337,4 @@ async function init() {
 init().catch(() => {
   document.getElementById("tracker").innerHTML = '<div class="empty-state"><p>The tracker data could not be loaded. Please refresh the page.</p></div>';
 });
+
