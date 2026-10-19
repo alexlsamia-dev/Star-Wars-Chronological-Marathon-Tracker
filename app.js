@@ -281,7 +281,7 @@ async function init() {
     els[key] = document.getElementById(key.replace(/[A-Z]/g, (m) => `-${m.toLowerCase()}`));
   });
   let lastError;
-  for (const path of ["/data/entries.min.json?v=2026-10-18-3", "/data/entries.json?v=2026-10-18-3"]) {
+  for (const path of ["/data/entries.min.json?v=2026-10-18-4", "/data/entries.json?v=2026-10-18-4"]) {
     try {
       const response = await fetch(path, { cache: "no-store" });
       if (!response.ok) throw new Error(`Tracker data request failed: ${response.status}`);
