@@ -352,6 +352,16 @@ async function init() {
     saveProgress();
     render();
   });
+  const creatorSupportSelect = document.getElementById("creator-support-select");
+  const creatorSupportLink = document.getElementById("creator-support-link");
+  creatorSupportSelect.addEventListener("change", () => {
+    const url = creatorSupportSelect.value;
+    creatorSupportLink.href = url || "#";
+    creatorSupportLink.setAttribute("aria-disabled", url ? "false" : "true");
+  });
+  creatorSupportLink.addEventListener("click", (event) => {
+    if (creatorSupportLink.getAttribute("aria-disabled") === "true") event.preventDefault();
+  });
 }
 
 init().catch(() => {
