@@ -1,6 +1,6 @@
 # Star Wars Chronological Marathon Tracker
 
-A static, mobile-friendly tracker generated from the unified Google Sheet. It includes 1,042 chronological entries spanning films, television, animation, games, shorts, Legends, fan films, and bonus material.
+A static, mobile-friendly tracker generated from the unified Google Sheet. It includes 1,117 chronological entries spanning films, television, animation, games, shorts, Legends, fan films, and bonus material.
 
 ## Features
 
